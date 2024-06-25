@@ -1,0 +1,13 @@
+polars
+ipykernel
+sqlalchemy
+psycopg2-binary
+pyarrow
+connectorx
+pandas
+tqdm
+langchain
+openai
+langchain-community
+pymysql
+python-decouple
