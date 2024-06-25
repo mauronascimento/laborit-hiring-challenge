@@ -1,17 +1,11 @@
 ## Laborit 💼💻 - Hiring Challenge
 ### Usando OpenAI, Langchain
 
-<hr />
-
-<img src="https://github.com/weet-ai/text2sql-workshop/blob/main/img/nosql.png?raw=true"/>
-
 ### Overview
 
-* This repo demonstrates the power of **Large Language Models** and **Generative AI** for simplifying access to data: instead of querying a database using **SQL**, why not doing so using **Natural Language**?
-* **text2sql** is a basic Python package which ships with [Langchain](https://www.langchain.com/). It contains simple logic for connecting to a local [Postgresql](https://www.postgresql.org/) instance, and by leveraging Langchain's `create_sql_query_chain`, it obtains metadata from our local DB instances and creates multiple prompts which are executed against an LLM (in our case, [OpenAI](https://openai.com/) ChatGPT).
-* As a result, we are able to convert questions from Natural Language to SQL Queries that are compliant with Postgresql's dialect.
+* Olá, desenvolvedores! Me chamo Mauro Nascimento e estou participando do processo seletivo para Laborit. Onde utilza OpenAI e Langchain para gerar consultas no banco de dados mysql.
 
-### Usage
+### Uso
 
 * Crie um ambiente virtual com a ferramenta de sua preferência e instale o pacote **text2sql** Python
 
@@ -61,4 +55,4 @@ print(query)
 
 ## Authors
 
-* [Rafael Pierre](https://github.com/mauronascimento/)
+* [Mauro Nascimento](https://github.com/mauronascimento/)
