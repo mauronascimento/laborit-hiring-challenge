@@ -1,5 +1,5 @@
-## Text2SQL Workshop
-### Using OpenAI, Langchain and Postgresql to Talk to Your Data
+## Laborit 💼💻 - Hiring Challenge
+### Usando OpenAI, Langchain
 
 <hr />
 
@@ -13,29 +13,52 @@
 
 ### Usage
 
-* Create a virtual environment with your tool of choice and install the **text2sql** Python package
-* Once the package is installed, you can create an IPython kernel and use it in Jupyter - checkout the notebooks provided in the `sandbox` folder.
+* Crie um ambiente virtual com a ferramenta de sua preferência e instale o pacote **text2sql** Python
 
 #### Example
 
 ```python
-from text2sql.core import Text2SQL
+from service.text_sql import TextSql
+from service.text_sql_invoke import TextSqlInvoke
+from service.questions import ALL_QUESTION
 
-sql = Text2SQL(model = "gpt-3.5-turbo")
-query = sql.query("How much do we have in total sales?")
+sql = TextSqlInvoke(model = "gpt-3.5-turbo")
+# Insira a questão abaixo
+#Exemplo
+#send_openai = "How much do we have in total produtos?"
+send_openai = "Quais são os produtos mais populares entre os clientes corporativos?"
+
+#
+for i, question in enumerate(ALL_QUESTION):
+    if ALL_QUESTION[i].get("input") == send_openai:
+        send_openai = []
+        sql = TextSql(model="gpt-3.5-turbo")
+        send_openai.append(ALL_QUESTION[i])
+
+
+query = sql.query(send_openai)
 print(query)
 ```
 
 ```bash
-> SELECT SUM("Weekly_Sales") AS total_sales FROM sales
+> SELECT products.product_name,
+                       order_details.quantity
+                FROM   orders
+                       INNER JOIN employees
+                               ON orders.employee_id = employees.id
+                       INNER JOIN order_details
+                               ON order_details.order_id = orders.id
+                       INNER JOIN products
+                               ON products.id = order_details.product_id
+                GROUP  BY products.product_name,
+                          order_details.quantity
+                ORDER  BY order_details.quantity DESC;
 ```
 
 ## Prereqs
 
-* We use Docker to boot up a Postgresql DB. Just run `docker-compose up -d` and you should be good to go
-* To ingest data into Postgres, run `text2sql/ingest.py` (for simplification purposes, the package expects you to be running a local instance of Postgresql at port 5432)
-* Make sure that you properly set your `OPENAI_API_KEY`
+* Certifique-se de definir corretamente seu `OPENAI_API_KEY`
 
 ## Authors
 
-* [Rafael Pierre](https://www.linkedin.com/in/rafaelpierre)
+* [Rafael Pierre](https://github.com/mauronascimento/)
