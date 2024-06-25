@@ -1,15 +1,13 @@
 ## Laborit 💼💻 - Hiring Challenge
 ### Usando OpenAI, Langchain
 
-### Overview
-
 * Olá, desenvolvedores! Me chamo Mauro Nascimento e estou participando do processo seletivo para Laborit. Onde utilza OpenAI e Langchain para gerar consultas no banco de dados mysql.
 
 ### Uso
 
 * Crie um ambiente virtual com a ferramenta de sua preferência e instale o pacote **text2sql** Python
 
-#### Example
+#### Exemplo
 
 ```python
 from service.text_sql import TextSql
@@ -49,10 +47,10 @@ print(query)
                 ORDER  BY order_details.quantity DESC;
 ```
 
-## Prereqs
+## Pré-requisito
 
 * Certifique-se de definir corretamente seu `OPENAI_API_KEY`
 
-## Authors
+## Autor
 
 * [Mauro Nascimento](https://github.com/mauronascimento/)
