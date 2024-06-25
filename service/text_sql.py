@@ -1,10 +1,4 @@
-# from langchain.chat_models import ChatOpenAI
-# from langchain.chains import create_sql_query_chain
-# from langchain import SQLDatabase
-# from sqlalchemy import create_engine
-import pydantic
 from pydantic import BaseModel
-# from langchain_core.runnables.base import Runnable
 
 from langchain_community.agent_toolkits.sql.base import create_sql_agent
 from langchain.agents.agent_toolkits import SQLDatabaseToolkit
@@ -15,12 +9,6 @@ from config import DB_URL
 
 
 class TextSql(BaseModel):
-
-    model: str = "gpt-4-1106-preview"
-    temperature: int = 0
-
-    class Config:
-        arbitrary_types_allowed = True
 
     @property
     def db(self) -> SQLDatabase:
@@ -41,5 +29,4 @@ class TextSql(BaseModel):
 
     def query(self, question):
         response = self.sql_agent.run(question)
-        # sql_query = response.split("SQLQuery:")[0]
         return response

@@ -3,6 +3,7 @@
 #launch.json folder
 .idea
 venv
+__pycache__/
 .vscode/
 #Cache folder
 .alcache/
